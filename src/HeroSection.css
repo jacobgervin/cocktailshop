@@ -1,0 +1,10 @@
+.hero-section {
+    text-align: center;
+  }
+  
+  .hero-image {
+    display: block;
+    margin: auto;
+    width: 500px;
+
+  }
