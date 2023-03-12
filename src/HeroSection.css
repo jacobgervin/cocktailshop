@@ -1,10 +1,12 @@
 .hero-section {
     text-align: center;
+    min-height: 100vh;
   }
   
   .hero-image {
     display: block;
     margin: auto;
     width: 500px;
+
 
   }
