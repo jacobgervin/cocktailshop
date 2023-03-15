@@ -3,9 +3,13 @@ import React from 'react';
 function Cart({ selectedCocktails, handleCloseCart, removeFromCart }) {
 
   const totalPrice = selectedCocktails.reduce(
-    (total, cocktail) => total + parseInt(cocktail.idDrink.substring(0, 2)),
+    (total, cocktail) => total + parseInt(cocktail.idDrink.substring(0, 2) * (cocktail.quantity)),
     0
   );
+
+
+
+  
   return (
       <div className='bg-slate-900/75 h-screen w-screen fixed right-0 flex flex-col justify-center items-center z-50 overflow-y-scroll '>
         <div className='lg:w-[32rem] lg:h-[32rem]  w-fit h-fit'>
@@ -31,7 +35,10 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart }) {
                         </p>
                     </div>
                     <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                    {cocktail.quantity}
+                    x
                     {cocktail.idDrink.substring(0, 2)} $
+
                     </div>
                     <button onClick={() => removeFromCart(cocktail.idDrink)}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="red" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
