@@ -26,7 +26,7 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
 </button>
    </div>
    <div class="flow-root">
-        <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <ul class="divide-y divide-gray-200 dark:divide-gray-700">
         {selectedCocktails.map((cocktail) => (
             <li key={cocktail.key} class="py-3 sm:py-4">
                 <div class="flex items-center space-x-4">
