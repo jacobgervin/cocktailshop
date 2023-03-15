@@ -14,11 +14,11 @@ const Products = ({ cocktails, addToCart }) => {
               <div className="mt-4 flex justify-between">
                 <div>
                 <h3 className="text-sm text-white-700">
-      <button type="button" className="text-left text-white" onClick={() => addToCart(cocktail.idDrink)}>
+      <button type="button" className="text-left text-white font-bold" onClick={() => addToCart(cocktail.idDrink)}>
         {cocktail.strDrink}
       </button>
     </h3>
-                  <p className="mt-1 text-sm text-white-500">Black</p>
+                  <p className="mt-1 text-sm text-gray-400">{cocktail.strCategory}</p>
                 </div>
                 <p className="text-sm font-medium text-white-900">{cocktail.idDrink.substring(0, 2)} $</p>
                 <button onClick={() => addToCart(cocktail.idDrink)} type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Add to cart</button>
