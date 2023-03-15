@@ -31,7 +31,7 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
             <li key={cocktail.key} class="py-3 sm:py-4">
                 <div class="flex items-center space-x-4">
                     <div class="flex-shrink-0">
-                        <img class="w-20 h-20 " src={cocktail.strDrinkThumb} alt="Neil image"></img>
+                        <img class="w-20 h-20 " src={cocktail.strDrinkThumb} alt={cocktail.strCategory} ></img>
                     </div>
                     <div class="flex-1 min-w-0">
                         <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
@@ -69,7 +69,7 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
         </div>
         </div>
    </div>
-   <button className='w-full bg-white p-2.5 mt-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl '>Procede to Checkout</button>
+   <button className='w-full bg-white p-2.5 mt-4 text-white rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl '>Procede to Checkout</button>
 </div>
 
         </div>
