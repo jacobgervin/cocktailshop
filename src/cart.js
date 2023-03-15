@@ -1,12 +1,15 @@
 import React from 'react';
 
-function Cart({ selectedCocktails, handleCloseCart, removeFromCart }) {
+function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuantity }) {
 
   const totalPrice = selectedCocktails.reduce(
     (total, cocktail) => total + parseInt(cocktail.idDrink.substring(0, 2) * (cocktail.quantity)),
     0
   );
 
+  const handleQuantityChange = (cocktailId, newQuantity) => {
+    updateQuantity(cocktailId, newQuantity);
+  };
 
 
   
@@ -14,7 +17,7 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart }) {
       <div className='bg-slate-900/75 h-screen w-screen fixed right-0 flex flex-col justify-center items-center z-50 overflow-y-scroll '>
         <div className='lg:w-[32rem] lg:h-[32rem]  w-fit h-fit'>
 
-        <div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <div class="flex items-center justify-between mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Cart</h5>
    </div>
@@ -34,12 +37,19 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart }) {
                         {cocktail.strCategory}
                         </p>
                     </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                    {cocktail.quantity}
-                    x
-                    {cocktail.idDrink.substring(0, 2)} $
+
+                    <div class="inline-flex items-center text-base font-semibold text-white">
+                      
+                    <input
+                    className='bg-gray-900 border border-gray-900 focus:ring-blue-500 focus:border-blue-500 p-1 w-14 text-center text-white rounded-lg'
+                    type="number"
+                    value={cocktail.quantity}
+                    onChange={(e) => handleQuantityChange(cocktail.idDrink, e.target.value)}
+                    />
+                    x {cocktail.idDrink.substring(0, 2)}$ = {cocktail.quantity * parseInt(cocktail.idDrink.substring(0, 2))}$
 
                     </div>
+                    
                     <button onClick={() => removeFromCart(cocktail.idDrink)}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="red" className="w-6 h-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>

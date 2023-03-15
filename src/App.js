@@ -50,10 +50,18 @@ const App = () => {
       setSelectedCocktails((prevSelectedCocktails) => prevSelectedCocktails.filter((cocktail) => cocktail.idDrink !== cocktailId));
     };
     
+    const updateQuantity = (cocktailId, newQuantity) => {
+      setSelectedCocktails(prevSelectedCocktails => {
+        const index = prevSelectedCocktails.findIndex(cocktail => cocktail.idDrink === cocktailId);
+        const updatedCocktails = [...prevSelectedCocktails];
+        updatedCocktails[index].quantity = newQuantity;
+        return updatedCocktails;
+      });
+    };
   
   return (
     <div>
-          <Navigation selectedCocktails={selectedCocktails} cocktails={cocktails} addToCart={addToCart} removeFromCart={removeFromCart} />
+          <Navigation selectedCocktails={selectedCocktails} cocktails={cocktails} addToCart={addToCart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />
         <HeroSection />
       <Products cocktails={cocktails} addToCart={addToCart} />
     </div>

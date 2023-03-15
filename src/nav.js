@@ -5,7 +5,7 @@ import Cart from './cart';
 
 
 
-const Navigation = ({ selectedCocktails, removeFromCart, addToCart}) => {
+const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuantity}) => {
   const [isExpanded, toggleExpansion] = useState(false);
 
   const [show, setShow] = useState(false);
@@ -62,7 +62,7 @@ Products
 
 </nav>
 </div>
-{show && <div className="rounded-md absolute top-0 right-0"><Cart selectedCocktails={selectedCocktails} removeFromCart={removeFromCart} handleCloseCart={handleCloseCart} /></div>}
+{show && <div className="rounded-md absolute top-0 right-0"><Cart selectedCocktails={selectedCocktails} removeFromCart={removeFromCart} handleCloseCart={handleCloseCart} updateQuantity={updateQuantity} /></div>}
 </div>
   )
 }
