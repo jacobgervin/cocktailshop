@@ -43,19 +43,6 @@ const App = () => {
           <Navigation selectedCocktails={selectedCocktails} cocktails={cocktails} addToCart={addToCart} removeFromCart={removeFromCart} />
         <HeroSection />
       <Products cocktails={cocktails} addToCart={addToCart} />
-
-      <div>
-        <h2 className="text-white font-bold text-lg mb-4">Selected Cocktails:</h2>
-        <ul className="text-white">
-          {selectedCocktails.map((cocktail) => (
-            <li key={cocktail.key}>{cocktail.strDrink}
-            <button onClick={() => removeFromCart(cocktail.idDrink)}>Remove from cart</button>
-            <button>({selectedCocktails.length})</button>
-            </li>
-
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };
