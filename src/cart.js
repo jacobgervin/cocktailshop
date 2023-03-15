@@ -8,9 +8,9 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
   );
 
   const handleQuantityChange = (cocktailId, newQuantity) => {
-    updateQuantity(cocktailId, newQuantity);
+    const parsedQuantity = parseInt(newQuantity);
+    updateQuantity(cocktailId, parsedQuantity);
   };
-
 
   
   return (
