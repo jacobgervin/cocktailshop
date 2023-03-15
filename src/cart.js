@@ -20,6 +20,10 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
         <div class="w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <div class="flex items-center justify-between mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Cart</h5>
+        <button onClick={handleCloseCart}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
+  <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
+</svg>
+</button>
    </div>
    <div class="flow-root">
         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -46,7 +50,7 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
                     value={cocktail.quantity}
                     onChange={(e) => handleQuantityChange(cocktail.idDrink, e.target.value)}
                     />
-                    x {cocktail.idDrink.substring(0, 2)}$ = {cocktail.quantity * parseInt(cocktail.idDrink.substring(0, 2))}$
+                    <p className='mx-2'>x</p> {cocktail.idDrink.substring(0, 2)}$ = {cocktail.quantity * parseInt(cocktail.idDrink.substring(0, 2))}$
 
                     </div>
                     
@@ -59,14 +63,13 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
 
         ))}
         </ul>
-        <div className='flex flex-row justify-space-between w-100 justify-between'>
-        <button onClick={handleCloseCart} > Continue Shopping</button>
+        <div className='flex flex-row justify-end w-100'>
         <div>
         <p>Total: {totalPrice} $ </p>
-
         </div>
         </div>
    </div>
+   <button className='w-full bg-white p-2.5 mt-4 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl '>Procede to Checkout</button>
 </div>
 
         </div>
