@@ -43,7 +43,7 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart }) {
         ))}
         </ul>
         <div className='flex flex-row justify-space-between w-100 justify-between'>
-        <button onClick={handleCloseCart} > close</button>
+        <button onClick={handleCloseCart} > Continue Shopping</button>
         <div>
         <p>Total: {totalPrice} $ </p>
 
