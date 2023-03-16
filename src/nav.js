@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import Cart from './cart';
+import Filter from './filter';
 import { Link } from 'react-scroll';
 
 
 
 
 
-const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuantity}) => {
+const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuantity, cocktails, handleFilterChange }) => {
   const [isExpanded, toggleExpansion] = useState(false);
 
   const [show, setShow] = useState(false);
 
+const [showSearch, setShowSearch] = useState(false)
 
+ const handleSearch  = () => {
+  setShowSearch(!showSearch)
+ };
+
+ const handleCloseSearch = () => {
+  setShowSearch(false);
+};
 
   const handleClick = () => {
     setShow(!show);
@@ -24,7 +33,7 @@ const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuanti
 
   return (
  <div className='relative z-40'>
-    <div className='flex flex-row fixed bg-slate-900 '>
+    <div className='flex flex-row fixed bg-[#100D0E] '>
     <nav className="flex items-center justify-between flex-wrap bg-[#100D0E] p-6 w-screen">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
     
@@ -32,7 +41,6 @@ const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuanti
     <svg fill="#fff" className='h-5 w-5' viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>drink3</title> <path d="M26.562 8.021l-10.496 9.213v11.939l5.841 2.827h-13.689l5.842-2.826v-11.94l-10.622-9.213h16.202l3.243-5.619 0.872 0.503-2.953 5.115h5.76zM24.111 8.965l-3.863 0.015-1.19 2.062h2.745l2.308-2.077zM16.066 15.069c0.591 0 1.069-0.479 1.069-1.070s-0.479-1.070-1.069-1.070-1.070 0.479-1.070 1.070c0 0.592 0.48 1.070 1.070 1.070zM5.89 8.965l2.327 2.077h9.679l1.188-2.057-13.194-0.020z"></path> </g></svg>
         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white ml-2">CocktailShop</span>
     </a>
-
   </div>
   <div className='flex flex-row h-100 items-center'>
   <button onClick={handleClick} className="text-white px-3 py-2 mr-5 rounded-md lg:absolute lg:right-1.5 flex flex-col justify-center items-center">
@@ -55,14 +63,15 @@ const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuanti
   </div>
   <div  className={`${
             isExpanded ? `block` : `hidden`
-          } bg-slate-900 w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
-    <div className="text-sm lg:flex-grow bg-slate-900">
+          } bg-[#100D0E] w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
+    <div className="text-sm lg:flex-grow bg-[#100D0E]">
       <Link to="products" smooth={true} duration={500} className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4">
 Products
       </Link>
       <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4">
        About
       </a>
+      <button onClick={handleSearch}>Search</button>
       
     </div>
   </div>
@@ -71,6 +80,8 @@ Products
 </nav>
 </div>
 {show && <div className="rounded-md absolute top-0 right-0"><Cart selectedCocktails={selectedCocktails} removeFromCart={removeFromCart} handleCloseCart={handleCloseCart} updateQuantity={updateQuantity} /></div>}
+{showSearch && <div className="rounded-md absolute top-0 right-0"><Filter handleCloseSearch={handleCloseSearch} addToCart={addToCart} cocktails={cocktails} handleFilterChange={handleFilterChange} /></div>}
+
 </div>
 
 
