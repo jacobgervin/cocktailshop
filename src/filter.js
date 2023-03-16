@@ -1,31 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
-const Filter = ({ handleCloseSearch, addToCart}) => {
+const Filter = ({ handleCloseSearch, addToCart, searchCocktails}) => {
 
     const [filteredCocktails, setFilteredCocktails] = useState([]);
     const [filter, setFilter] = useState('');
     
-    useEffect(() => {
-      const fetchCocktails = async () => {
-        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${filter}`);
-        const data = await response.json();
-        setFilteredCocktails(data.drinks);
+    const handleSearch = (event) => {
+        const searchTerm = event.target.value;
+        const filteredCocktails = searchCocktails(searchTerm);
+        setFilteredCocktails(filteredCocktails);
       };
-      
-      fetchCocktails();
-    }, [filter]);
-  
-    
-    const handleFilterChange = event => {
-      setFilter(event.target.value);
-    };
   
   return (
     <div className='bg-slate-900 h-screen w-screen fixed right-0 flex flex-col items-center z-50 overflow-y-scroll'> 
-          <button className='absolute right-3.5 top-3.5' onClick={handleCloseSearch}>X</button>   
-      <input className='text-black mt-10' type="text" placeholder="Search cocktails..." value={filter} onChange={handleFilterChange} />
+    <div className='w-4/5 h- fixed flex flex-row items-center justify-between bg-slate-900 py-8 '>  
+      <input className='text-black' type="text" placeholder="Search cocktails..."  onChange={handleSearch} />
+      <button className='' onClick={handleCloseSearch}>X</button> 
+    </div>
       <div className='w-4/5'>
-      <ul className='divide-y divide-gray-200 dark:divide-gray-700'>
+      <ul className='divide-y divide-gray-200 dark:divide-gray-700 mt-20'>
         {filteredCocktails && filteredCocktails.map(cocktail => (
             <li key={cocktail.key} class="py-3 sm:py-4">
             <div class="flex items-center space-x-4">
@@ -53,7 +46,13 @@ const Filter = ({ handleCloseSearch, addToCart}) => {
             </div>
         </li>
         ))}
-        {!filteredCocktails && <p>No results found.</p>}
+        {filteredCocktails.length === 0 && (
+  <li className="py-3 sm:py-4 text-center">
+    <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+      No results found.
+    </p>
+  </li>
+)}
       </ul>
       </div>
     </div>

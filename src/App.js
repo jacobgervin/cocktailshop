@@ -31,21 +31,16 @@ const App = () => {
     fetchCocktails();
   }, []);
 
-  const [filteredCocktails, setFilteredCocktails] = useState([]);
-  const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    const fetchFilteredCocktails = async () => {
-      const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${filter}`);
-      const data = await response.json();
-      setFilteredCocktails(data.drinks);
-    };
-    fetchFilteredCocktails();
-  }, [filter]);
-
-  const handleFilterChange = event => {
-    setFilter(event.target.value);
+  const searchCocktails = (searchTerm) => {
+    const filteredCocktails = cocktails.filter(cocktail => {
+      return cocktail.strDrink.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+    
+    return filteredCocktails;
   };
+  
+ 
 
   const addToCart = (cocktailId) => {
     const selectedCocktail = cocktails.find((cocktail) => cocktail.idDrink === cocktailId);
@@ -89,10 +84,11 @@ const App = () => {
       });
     };
   
+  
     
   return (
     <div>
-          <Navigation selectedCocktails={selectedCocktails} cocktails={cocktails} addToCart={addToCart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} handleFilterChange={handleFilterChange} />
+          <Navigation selectedCocktails={selectedCocktails} cocktails={cocktails} addToCart={addToCart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} searchCocktails={searchCocktails}/>
         <HeroSection />
       <Products cocktails={cocktails} addToCart={addToCart} />
       <Filter />

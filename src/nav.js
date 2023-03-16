@@ -7,7 +7,7 @@ import { Link } from 'react-scroll';
 
 
 
-const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuantity, cocktails, handleFilterChange }) => {
+const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuantity, cocktails, handleFilterChange, searchCocktails }) => {
   const [isExpanded, toggleExpansion] = useState(false);
 
   const [show, setShow] = useState(false);
@@ -30,6 +30,7 @@ const [showSearch, setShowSearch] = useState(false)
     setShow(false);
   };
   
+  
 
   return (
  <div className='relative z-40'>
@@ -43,12 +44,20 @@ const [showSearch, setShowSearch] = useState(false)
     </a>
   </div>
   <div className='flex flex-row h-100 items-center'>
-  <button onClick={handleClick} className="text-white px-3 py-2 mr-5 rounded-md lg:absolute lg:right-1.5 flex flex-col justify-center items-center">
+  <button onClick={handleClick} className="text-white px-3 py-2 sm:ml-5 md:ml-6 rounded-md lg:absolute lg:right-8 flex flex-col justify-center items-center">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-5 h-5">
   <path d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
 </svg>
 <span className="bg-green-500 mb-7 ml-7 absolute text-white font-bold rounded-full text-xs px-1">{selectedCocktails.reduce((total, cocktail) => total + cocktail.quantity, 0)}</span>
   </button>
+  <a href className="text-white px-3 py-2 sm:ml-5 md:ml-6 rounded-md lg:absolute lg:right-16 flex flex-col justify-center items-center" onClick={handleSearch}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
+  <path d="M8.25 10.875a2.625 2.625 0 115.25 0 2.625 2.625 0 01-5.25 0z" />
+  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.125 4.5a4.125 4.125 0 102.338 7.524l2.007 2.006a.75.75 0 101.06-1.06l-2.006-2.007a4.125 4.125 0 00-3.399-6.463z" clip-rule="evenodd" />
+</svg>
+
+
+      </a>
 
   <div className="block lg:hidden">
     <button
@@ -71,7 +80,6 @@ Products
       <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4">
        About
       </a>
-      <button onClick={handleSearch}>Search</button>
       
     </div>
   </div>
@@ -80,7 +88,7 @@ Products
 </nav>
 </div>
 {show && <div className="rounded-md absolute top-0 right-0"><Cart selectedCocktails={selectedCocktails} removeFromCart={removeFromCart} handleCloseCart={handleCloseCart} updateQuantity={updateQuantity} /></div>}
-{showSearch && <div className="rounded-md absolute top-0 right-0"><Filter handleCloseSearch={handleCloseSearch} addToCart={addToCart} cocktails={cocktails} handleFilterChange={handleFilterChange} /></div>}
+{showSearch && <div className="rounded-md absolute top-0 right-0"><Filter handleCloseSearch={handleCloseSearch} addToCart={addToCart} cocktails={cocktails} handleFilterChange={handleFilterChange} searchCocktails={searchCocktails} /></div>}
 
 </div>
 

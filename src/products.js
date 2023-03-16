@@ -1,17 +1,23 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Products = ({ cocktails, addToCart }) => {
+  const [randomCocktails, setRandomCocktails] = useState([]);
 
-  
-  
+  // Shuffle the cocktails array randomly
+  useEffect(() => {
+    const shuffledCocktails = cocktails.sort(() => 0.5 - Math.random());
+    // Get the first 20 cocktails from the shuffled array
+    const randomCocktails = shuffledCocktails.slice(0, 20);
+    setRandomCocktails(randomCocktails);
+  }, [cocktails]);
+
 
   return (
     <div id='products'>
       
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8">
-          {cocktails.map((cocktail) => (
+          {randomCocktails.map((cocktail) => (
             <div className="group relative" key={cocktail.idDrink}>
               <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                 <img src={cocktail.strDrinkThumb} alt={cocktail.strCategory} className="h-full w-full object-cover object-center lg:h-full lg:w-full"></img>
