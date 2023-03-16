@@ -25,7 +25,7 @@ const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuanti
   return (
  <div className='relative z-40'>
     <div className='flex flex-row fixed bg-slate-900 '>
-    <nav className="flex items-center justify-between flex-wrap bg-black-500 p-6 w-screen">
+    <nav className="flex items-center justify-between flex-wrap bg-[#100D0E] p-6 w-screen">
   <div className="flex items-center flex-shrink-0 text-white mr-6">
     
     <a href="/" class="flex items-center">
@@ -44,10 +44,12 @@ const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuanti
 
   <div className="block lg:hidden">
     <button
-    className="flex items-center px-3 py-2 border rounded text-white-200 border-black-400 hover:text-white hover:border-white"
+    className="flex items-center px-3 py-2  rounded text-white-200 border-black-400 hover:text-white "
     onClick={() => toggleExpansion(!isExpanded)}
     >
-      <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+  <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+</svg>
     </button>
   </div>
   </div>
