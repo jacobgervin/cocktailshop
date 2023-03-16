@@ -5,7 +5,6 @@ import HeroSection from './hero';
 
 
 
-
 const App = () => {
 
     const [cocktails, setCocktails] = useState([]);

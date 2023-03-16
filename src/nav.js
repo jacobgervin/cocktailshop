@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Cart from './cart';
+import { Link } from 'react-scroll';
 
 
 
@@ -54,9 +55,9 @@ const Navigation = ({ selectedCocktails, removeFromCart, addToCart, updateQuanti
             isExpanded ? `block` : `hidden`
           } bg-slate-900 w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
     <div className="text-sm lg:flex-grow bg-slate-900">
-      <a href="/products" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4">
+      <Link to="products" smooth={true} duration={500} className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4">
 Products
-      </a>
+      </Link>
       <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4">
        About
       </a>
