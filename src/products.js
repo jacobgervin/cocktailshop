@@ -13,13 +13,15 @@ const Products = ({ cocktails, addToCart }) => {
 
 
   return (
-    <div id='products'>
-      
+    <div id='products' className='mt-10 '>
+      <div className='w-full flex flex-row px-4 mx-auto lg:ml-5 '>
+      <h2 className='text-3xl mt-10 -mb-20 font-extrabold'>PRODUCTS</h2>
+      </div>
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8">
+        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {randomCocktails.map((cocktail) => (
             <div className="group relative" key={cocktail.idDrink}>
-              <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+              <div className="min-h-60 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                 <img src={cocktail.strDrinkThumb} alt={cocktail.strCategory} className="h-full w-full object-cover object-center lg:h-full lg:w-full"></img>
               </div>
               <div className="mt-4 flex justify-between">
