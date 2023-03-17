@@ -3,7 +3,7 @@ import Products from './products';
 import Navigation from './nav';
 import HeroSection from './hero';
 import Filter from './filter';
-
+import AgeVerificationModal from "./ageverification";
 
 
 const App = () => {
