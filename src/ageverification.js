@@ -19,7 +19,7 @@ function AgeVerificationModal() {
             <h2 className="text-3xl  font-extrabold mb-10">Are you over 18 years old?</h2>
             <div className="w-full flex flex-row justify-evenly mb-5">
 
-            <button className="bg-green-600 px-6 py-2 text-x rounded font-extrabold" onClick={handleYesClick}>Yes</button>
+            <button className="bg-green-600 px-6 py-2 text-xl rounded font-extrabold" onClick={handleYesClick}>Yes</button>
             <button className="bg-rose-700 px-6 py-2 text-xl rounded font-extrabold" onClick={handleNoClick}>No</button>
 
             </div>
