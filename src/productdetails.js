@@ -15,12 +15,12 @@ function ProductDetails({ cocktail, handleCloseDetails, addToCart }) {
     }
 
     return (
-      <div className='bg-slate-900 h-screen w-screen fixed right-0 flex flex-col justify-center items-center z-50'>
+      <div className='bg-slate-900 h-screen w-screen fixed right-0 flex flex-col lg:justify-center lg:items-center z-50'>
          <button className='absolute top-4 right-4' onClick={handleCloseDetails}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
   <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
 </svg>
 </button>
-            <div class="flex lg:flex-row flex-col p-5">
+            <div class="flex lg:flex-row flex-col p-5 overflow-y-scroll">
                 
                 <div class="flex-shrink-0">
                     <img class="w-full h-80 " src={cocktail.strDrinkThumb} alt={cocktail.strCategory} ></img>

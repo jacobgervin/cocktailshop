@@ -45,10 +45,9 @@ const Products = ({ cocktails, addToCart }) => {
               </div>
               <div className="mt-4 flex justify-between">
                 <div>
-                <h3 className="text-sm text-white-700">
-      <button type="button" className="text-left text-white font-bold" onClick={() => addToCart(cocktail.idDrink)}>
+                <h3 className="text-left text-white font-bold">
         {cocktail.strDrink}
-      </button>
+
     </h3>
                   <p className="mt-1 text-sm text-gray-400">{cocktail.strCategory}</p>
                 </div>
