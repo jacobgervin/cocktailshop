@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { motion, AnimatePresence } from 'framer-motion'
 const Filter = ({ handleCloseSearch, addToCart, searchCocktails}) => {
 
     const [filteredCocktails, setFilteredCocktails] = useState([]);
@@ -12,15 +12,27 @@ const Filter = ({ handleCloseSearch, addToCart, searchCocktails}) => {
       };
   
   return (
-    <div className='bg-slate-900 h-screen w-screen fixed right-0 flex flex-col items-center z-50 overflow-y-scroll'> 
-    <div className='w-4/5 h- fixed flex flex-row items-center justify-between bg-slate-900 py-8 '>  
-      <input className='text-black' type="text" placeholder="Search cocktails..."  onChange={handleSearch} />
+    <AnimatePresence>
+    <motion.div                
+    initial={{ x: '-100px',  opacity: 0 } }
+    animate={{ x: 0,  opacity: 100 }}
+    transition={{ duration: 0.5 }}
+    exit={{ opacity: 0 }}
+     className='bg-slate-900 h-screen w-screen fixed right-0 flex flex-col items-center z-50 overflow-y-scroll'> 
+    <div className='w-4/5 fixed flex flex-row items-center justify-between bg-slate-900 py-8 '>  
+      <input className='text-white bg-slate-800 border-b p-2 focus:outline-none' type="text" placeholder="Search cocktails..."  onChange={handleSearch} />
       <button className='' onClick={handleCloseSearch}>X</button> 
     </div>
       <div className='w-4/5'>
       <ul className='divide-y divide-gray-200 dark:divide-gray-700 mt-20'>
         {filteredCocktails && filteredCocktails.map(cocktail => (
-            <li key={cocktail.key} class="py-3 sm:py-4">
+          <AnimatePresence>
+            <motion.li
+                 initial={{x: '-100px', opacity: 0}}
+                 whileInView={{x: 0, opacity: 100}}
+                 viewport={{ once: true }}
+                 transition={{ duration: 1 }}
+            key={cocktail.key} class="py-3 sm:py-4">
             <div class="flex items-center space-x-4">
                 <div class="flex-shrink-0">
                     <img class="w-20 h-20 " src={cocktail.strDrinkThumb} alt={cocktail.strCategory} ></img>
@@ -44,18 +56,20 @@ const Filter = ({ handleCloseSearch, addToCart, searchCocktails}) => {
                 </div>
             
             </div>
-        </li>
+        </motion.li>
+        </AnimatePresence>
         ))}
         {filteredCocktails.length === 0 && (
   <li className="py-3 sm:py-4 text-center">
-    <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+    <p className="text-sm font-medium text-gray-900 truncate dark:text-white mt-10">
       No results found.
     </p>
   </li>
 )}
       </ul>
       </div>
-    </div>
+    </motion.div>
+    </AnimatePresence>
   );
 };
 

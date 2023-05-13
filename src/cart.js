@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuantity }) {
 
@@ -16,8 +17,13 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
   return (
       <div className='bg-slate-900/75 h-screen w-screen fixed right-0 flex flex-col justify-center items-center z-50 overflow-y-scroll '>
         <div className='lg:w-[32rem] h-[32rem]  w-fit'>
-
-        <div class="max-w-full mx-5  p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <AnimatePresence>
+        <motion.div               
+            initial={{ x: '-100px',  opacity: 0 } }
+            animate={{ x: 0,  opacity: 100 }}
+            transition={{ duration: 0.5 }}
+            exit={{ opacity: 0 }}
+        class="max-w-full mx-5  p-4 bg-white border border-gray-100 rounded-lg shadow sm:p-8 dark:bg-slate-900 dark:border-gray-700">
     <div class="flex items-center justify-between mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Cart</h5>
         <button onClick={handleCloseCart}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
@@ -71,7 +77,8 @@ function Cart({ selectedCocktails, handleCloseCart, removeFromCart, updateQuanti
         </div>
    </div>
    <button className='w-full bg-white p-2.5 mt-4 text-white rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl '>Procede to Checkout</button>
-</div>
+</motion.div>
+</AnimatePresence>
 
         </div>
       </div>
