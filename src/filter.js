@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion'
 const Filter = ({ handleCloseSearch, addToCart, searchCocktails}) => {
 
     const [filteredCocktails, setFilteredCocktails] = useState([]);
-    const [filter, setFilter] = useState('');
     
     const handleSearch = (event) => {
         const searchTerm = event.target.value;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Cart from './cart';
 import Filter from './filter';
+import "./nav.css"
 import { Link } from 'react-scroll';
 
 
@@ -74,13 +75,9 @@ const [showSearch, setShowSearch] = useState(false)
             isExpanded ? `block` : `hidden`
           } bg-[#100D0E] w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
     <div className="text-sm lg:flex-grow bg-[#04162E] py-4">
-      <Link to="products" smooth={true} duration={500} className="block cursor-pointer lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4 font-bold lg:font-normal">
+      <Link to="products" smooth={true} duration={500} className="block cursor-pointer lg:inline-block lg:mt-0 text-white-200 hover:text-white mr-4 font-bold lg:font-normal navlink">
 Products
       </Link>
-      <a href="#responsive-header" className="block mt-4 lg:inline-block cursor-pointer lg:mt-0 text-white-200 hover:text-white mr-4 font-bold lg:font-normal">
-       About
-      </a>
-      
     </div>
   </div>
 

@@ -3,14 +3,12 @@ import './HeroSection.css'; // Import your CSS file for styling
 import { motion } from 'framer-motion'
 
 
-const flicker = () => {
-    setTimeout(() => {
-      const brightness = Math.random() > 0.5 ? "brightness(0.8)" : "brightness(1.2)";
-      flicker();
-    }, Math.random() * 3000);
+  const getRandomValue = () => {
+    const min = 0.8;
+    const max = 1.2;
+    return Math.random() * (max - min) + min;
   };
 
-  flicker();
 
 function Cocktailshopsvg() {
   return (
@@ -539,8 +537,21 @@ function Cocktailshopsvg() {
     </g>
     <g transform="matrix(1, 0, 0, 1, 551.3, 130.48)" filter="url(#COCKTAILSHOP)">
       <motion.g 
-      animate={{ filter: ["brightness(0.8)", "brightness(1.2)"] }}
-      transition={{ duration: 0.1 }}
+animate={{
+  filter: [
+    `brightness(${getRandomValue()})`,
+    `brightness(${getRandomValue()})`,
+    `brightness(${getRandomValue()})`,
+    `brightness(${getRandomValue()})`,
+    `brightness(${getRandomValue()})`,
+    "brightness(1.2)",
+  ],
+}}
+transition={{
+  duration: 0.1,
+  repeat: Infinity,
+  repeatType: "mirror",
+}}
       
        id="COCKTAILSHOP-2" data-name="COCKTAILSHOP" transform="translate(107.94 164.09)" fill="#fff">
 
