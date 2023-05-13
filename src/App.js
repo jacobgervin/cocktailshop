@@ -86,7 +86,7 @@ const App = () => {
   
     
   return (
-    <div>
+    <div className='bg-[#04162E]'>
           <Navigation selectedCocktails={selectedCocktails} cocktails={cocktails} addToCart={addToCart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} searchCocktails={searchCocktails}/>
         <HeroSection />
       <Products cocktails={cocktails} addToCart={addToCart} />
